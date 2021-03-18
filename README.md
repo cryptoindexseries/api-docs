@@ -1,1 +1,1 @@
-# api-docs
+# CryptoIndexSeries Api
