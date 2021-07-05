@@ -1,0 +1,1542 @@
+openapi: "3.0.1"
+info:
+  title: "CIS Public API"
+  version: "1.0.0"
+servers:
+- url: "https://g7i2e522m0.execute-api.eu-central-1.amazonaws.com/{basePath}"
+  variables:
+    basePath:
+      default: "/prod"
+tags:
+- name: "Portfolio CRUD"
+- name: "Account CRUD"
+- name: "Account-Portfolio Relation"
+- name: "Balance"
+- name: "Trade"
+- name: "Transfer"
+- name: "Document"
+- name: "Trading"
+paths:
+  /cis-portfolio/account/{account_id}/trade/document:
+    get:
+      tags:
+      - "Trade"
+      summary: "List Trade Documents"
+      parameters:
+      - name: "account_id"
+        in: "path"
+        description: "ID of the account belongs to user."
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "Successful response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content: {}
+      security:
+      - CustomAuthorizerRequest: []
+    options:
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+  /cis-trading/{key_id}/trades:
+    get:
+      tags:
+      - "Trading"
+      summary: "Fetch Trades"
+      parameters:
+      - name: "key_id"
+        in: "path"
+        description: "ID of the account/key that belongs to user."
+        required: true
+        schema:
+          type: "string"
+      - name: "symbol"
+        in: "query"
+        description: "Native symbol of the trades "
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "Successful response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content: {}
+      security:
+      - CustomAuthorizerRequest: []
+    options:
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+  /cis-portfolio/account/{account_id}/trade:
+    post:
+      tags:
+      - "Trade"
+      summary: "Add Trade"
+      parameters:
+      - name: "account_id"
+        in: "path"
+        description: "ID of the account belongs to user."
+        required: true
+        schema:
+          type: "string"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TradeRequest"
+        required: true
+      responses:
+        "200":
+          description: "Successful response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content: {}
+      security:
+      - CustomAuthorizerRequest: []
+    options:
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+  /cis-portfolio/account/{account_id}:
+    put:
+      tags:
+      - "Account CRUD"
+      summary: "Update Account Name"
+      parameters:
+      - name: "account_id"
+        in: "path"
+        description: "ID of the account belongs to user."
+        required: true
+        schema:
+          type: "string"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateAccount"
+        required: true
+      responses:
+        "200":
+          description: "Successful response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content: {}
+      security:
+      - CustomAuthorizerRequest: []
+    delete:
+      tags:
+      - "Account CRUD"
+      summary: "Delete Account"
+      parameters:
+      - name: "account_id"
+        in: "path"
+        description: "ID of the account belongs to user."
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "Successful response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content: {}
+      security:
+      - CustomAuthorizerRequest: []
+    options:
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+  /cis-portfolio/account/{account_id}/document/export/trade:
+    post:
+      tags:
+      - "Document"
+      summary: "Export Trade Document"
+      parameters:
+      - name: "account_id"
+        in: "path"
+        description: "ID of the account belongs to user."
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "Successful response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content: {}
+      security:
+      - CustomAuthorizerRequest: []
+    options:
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+  /cis-portfolio/account/{account_id}/transfer/{transfer_id}:
+    put:
+      tags:
+      - "Transfer"
+      summary: "Update Transfer"
+      parameters:
+      - name: "transfer_id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      - name: "account_id"
+        in: "path"
+        description: "ID of the account belongs to user."
+        required: true
+        schema:
+          type: "string"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TransferRequest"
+        required: true
+      responses:
+        "200":
+          description: "Successful response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content: {}
+      security:
+      - CustomAuthorizerRequest: []
+    delete:
+      tags:
+      - "Transfer"
+      summary: "Delete Transfer"
+      parameters:
+      - name: "transfer_id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      - name: "account_id"
+        in: "path"
+        description: "ID of the account belongs to user."
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "Successful response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content: {}
+      security:
+      - CustomAuthorizerRequest: []
+    options:
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+  /cis-portfolio/account/{account_id}/document/export/transfer:
+    post:
+      tags:
+      - "Document"
+      summary: "Export Transfer Document"
+      parameters:
+      - name: "account_id"
+        in: "path"
+        description: "ID of the account belongs to user."
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "Successful response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content: {}
+      security:
+      - CustomAuthorizerRequest: []
+    options:
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+  /cis-trading/{key_id}/balances:
+    get:
+      tags:
+      - "Trading"
+      summary: "Fetch Balances"
+      parameters:
+      - name: "key_id"
+        in: "path"
+        description: "ID of the account/key that belongs to user."
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "Successful response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content: {}
+      security:
+      - CustomAuthorizerRequest: []
+    options:
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+  /cis-portfolio/account/{account_id}/transfer:
+    post:
+      tags:
+      - "Transfer"
+      summary: "Add Transfer"
+      parameters:
+      - name: "account_id"
+        in: "path"
+        description: "ID of the account belongs to user."
+        required: true
+        schema:
+          type: "string"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TransferRequest"
+        required: true
+      responses:
+        "200":
+          description: "Successful response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content: {}
+      security:
+      - CustomAuthorizerRequest: []
+    options:
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+  /cis-portfolio/portfolio:
+    get:
+      tags:
+      - "Portfolio CRUD"
+      summary: "Get Portfolios of User"
+      responses:
+        "200":
+          description: "Successful response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content: {}
+      security:
+      - CustomAuthorizerRequest: []
+    post:
+      tags:
+      - "Portfolio CRUD"
+      summary: "Create Portfolio"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PortfolioRequest"
+        required: true
+      responses:
+        "200":
+          description: "Successful response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content: {}
+      security:
+      - CustomAuthorizerRequest: []
+    options:
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+  /cis-portfolio/account/{account_id}/trade/{trade_id}:
+    put:
+      tags:
+      - "Trade"
+      summary: "Update Trade"
+      parameters:
+      - name: "trade_id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      - name: "account_id"
+        in: "path"
+        description: "ID of the account belongs to user."
+        required: true
+        schema:
+          type: "string"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TradeRequest"
+        required: true
+      responses:
+        "200":
+          description: "Successful response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content: {}
+      security:
+      - CustomAuthorizerRequest: []
+    delete:
+      tags:
+      - "Trade"
+      summary: "Delete Trade"
+      parameters:
+      - name: "trade_id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      - name: "account_id"
+        in: "path"
+        description: "ID of the account belongs to user."
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "Successful response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content: {}
+      security:
+      - CustomAuthorizerRequest: []
+    options:
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+  /cis-portfolio/portfolio/{portfolio_id}/account:
+    get:
+      tags:
+      - "Account-Portfolio Relation"
+      summary: "Get Accounts of Portfolio"
+      parameters:
+      - name: "portfolio_id"
+        in: "path"
+        description: "ID of the portfolio belongs to user."
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "Successful response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content: {}
+      security:
+      - CustomAuthorizerRequest: []
+    options:
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+  /cis-portfolio/portfolio/{portfolio_id}/account/{account_id}:
+    put:
+      tags:
+      - "Account-Portfolio Relation"
+      summary: "Add Account to Portfolio"
+      parameters:
+      - name: "portfolio_id"
+        in: "path"
+        description: "ID of the portfolio belongs to user."
+        required: true
+        schema:
+          type: "string"
+      - name: "account_id"
+        in: "path"
+        description: "ID of the account belongs to user."
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "Successful response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content: {}
+      security:
+      - CustomAuthorizerRequest: []
+    delete:
+      tags:
+      - "Account-Portfolio Relation"
+      summary: "Delete Account from Portfolio"
+      parameters:
+      - name: "portfolio_id"
+        in: "path"
+        description: "ID of the portfolio belongs to user."
+        required: true
+        schema:
+          type: "string"
+      - name: "account_id"
+        in: "path"
+        description: "ID of the account belongs to user."
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "Successful response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content: {}
+      security:
+      - CustomAuthorizerRequest: []
+    options:
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+  /cis-portfolio/account/{account_id}/document/{document_id}:
+    get:
+      tags:
+      - "Document"
+      summary: "Download a Document"
+      parameters:
+      - name: "document_id"
+        in: "path"
+        description: "ID of the document belongs to user."
+        required: true
+        schema:
+          type: "string"
+      - name: "account_id"
+        in: "path"
+        description: "ID of the account belongs to user."
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "Successful response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content: {}
+      security:
+      - CustomAuthorizerRequest: []
+    options:
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+  /cis-portfolio/account/{account_id}/document/import/trade:
+    post:
+      tags:
+      - "Document"
+      summary: "Import Trade Document"
+      parameters:
+      - name: "account_id"
+        in: "path"
+        description: "ID of the account belongs to user."
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "Successful response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content: {}
+      security:
+      - CustomAuthorizerRequest: []
+    options:
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+  /cis-portfolio/balance/history:
+    get:
+      tags:
+      - "Balance"
+      summary: "Balance History Request"
+      parameters:
+      - name: "ccy"
+        in: "query"
+        description: "Currency"
+        schema:
+          type: "string"
+      - name: "account_ids"
+        in: "query"
+        description: "List of account ids in a comma-seperated fashion"
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "Successful response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content: {}
+      security:
+      - CustomAuthorizerRequest: []
+    options:
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+  /cis-portfolio/account:
+    get:
+      tags:
+      - "Account CRUD"
+      summary: "Get Accounts of User"
+      responses:
+        "200":
+          description: "Successful response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content: {}
+      security:
+      - CustomAuthorizerRequest: []
+    post:
+      tags:
+      - "Account CRUD"
+      summary: "Create Exchange Account"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateAccount"
+        required: true
+      responses:
+        "200":
+          description: "Successful response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content: {}
+      security:
+      - CustomAuthorizerRequest: []
+    options:
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+  /cis-trading/{key_id}/order:
+    post:
+      tags:
+      - "Trading"
+      summary: "Create Order"
+      parameters:
+      - name: "key_id"
+        in: "path"
+        description: "ID of the account/key that belongs to user."
+        required: true
+        schema:
+          type: "string"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OrderRequest"
+        required: true
+      responses:
+        "200":
+          description: "Successful response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content: {}
+      security:
+      - CustomAuthorizerRequest: []
+    options:
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+  /cis-trading/{key_id}/order/{order_id}:
+    get:
+      tags:
+      - "Trading"
+      summary: "Read Order"
+      parameters:
+      - name: "key_id"
+        in: "path"
+        description: "ID of the account/key that belongs to user."
+        required: true
+        schema:
+          type: "string"
+      - name: "symbol"
+        in: "query"
+        description: "Native Symbol of the order "
+        schema:
+          type: "string"
+      - name: "order_id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "Successful response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content: {}
+      security:
+      - CustomAuthorizerRequest: []
+    delete:
+      tags:
+      - "Trading"
+      summary: "Cancel Order"
+      parameters:
+      - name: "key_id"
+        in: "path"
+        description: "ID of the account/key that belongs to user."
+        required: true
+        schema:
+          type: "string"
+      - name: "symbol"
+        in: "query"
+        description: "Native symbol of the order intented to be deleted"
+        schema:
+          type: "string"
+      - name: "order_id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "Successful response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content: {}
+      security:
+      - CustomAuthorizerRequest: []
+    options:
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+  /cis-portfolio/balance:
+    get:
+      tags:
+      - "Balance"
+      summary: "Current Balance Request"
+      parameters:
+      - name: "account_ids"
+        in: "query"
+        description: "List of account ids in a comma-seperated fashion"
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "Successful response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content: {}
+      security:
+      - CustomAuthorizerRequest: []
+    options:
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+  /cis-portfolio/portfolio/{portfolio_id}:
+    put:
+      tags:
+      - "Portfolio CRUD"
+      summary: "Update Portfolio"
+      parameters:
+      - name: "portfolio_id"
+        in: "path"
+        description: "ID of the portfolio belongs to user."
+        required: true
+        schema:
+          type: "string"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PortfolioRequest"
+        required: true
+      responses:
+        "200":
+          description: "Successful response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content: {}
+      security:
+      - CustomAuthorizerRequest: []
+    delete:
+      tags:
+      - "Portfolio CRUD"
+      summary: "Delete Portfolio"
+      parameters:
+      - name: "portfolio_id"
+        in: "path"
+        description: "ID of the portfolio belongs to user."
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "Successful response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content: {}
+      security:
+      - CustomAuthorizerRequest: []
+    options:
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+  /cis-trading/{key_id}/order/open:
+    get:
+      tags:
+      - "Trading"
+      summary: "Get Open Orders"
+      parameters:
+      - name: "key_id"
+        in: "path"
+        description: "ID of the account/key that belongs to user."
+        required: true
+        schema:
+          type: "string"
+      - name: "symbol"
+        in: "query"
+        description: "Native symbol of the orders"
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "Successful response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content: {}
+      security:
+      - CustomAuthorizerRequest: []
+    options:
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+  /cis-portfolio/account/{account_id}/transfer/document:
+    get:
+      tags:
+      - "Transfer"
+      summary: "List Transfer Documents"
+      parameters:
+      - name: "account_id"
+        in: "path"
+        description: "ID of the account belongs to user."
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "Successful response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content: {}
+      security:
+      - CustomAuthorizer: []
+    options:
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+  /cis-portfolio/trade:
+    get:
+      tags:
+      - "Trade"
+      summary: "Trade History Request"
+      parameters:
+      - name: "start"
+        in: "query"
+        description: "Filter trades made after this date"
+        schema:
+          type: "string"
+      - name: "quoted_assets"
+        in: "query"
+        description: "Filter trades that has these assets as quoted asset"
+        schema:
+          type: "string"
+      - name: "page_size"
+        in: "query"
+        description: "How many items returned on single call (page)"
+        schema:
+          type: "string"
+      - name: "page_number"
+        in: "query"
+        description: "Used to get results that are next in line"
+        schema:
+          type: "string"
+      - name: "end"
+        in: "query"
+        description: "Filter trades made before this date"
+        schema:
+          type: "string"
+      - name: "base_assets"
+        in: "query"
+        description: "Filter trades that has these assets as base asset"
+        schema:
+          type: "string"
+      - name: "exchange_codes"
+        in: "query"
+        description: "Filter trades that is performed on given exchange(s)"
+        schema:
+          type: "string"
+      - name: "account_ids"
+        in: "query"
+        description: "List of account ids in comma-seperated fashion"
+        schema:
+          type: "string"
+      - name: "asset_types"
+        in: "query"
+        description: "?"
+        schema:
+          type: "string"
+      - name: "order_by_field"
+        in: "query"
+        description: "Order result by given field"
+        schema:
+          type: "string"
+      - name: "order_by_direction"
+        in: "query"
+        description: "Ordering direction (asc|desc)"
+        schema:
+          type: "string"
+      - name: "portfolio_id"
+        in: "query"
+        description: "Id of portfolio to read trade history from"
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "Successful response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content: {}
+      security:
+      - CustomAuthorizerRequest: []
+    options:
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+  /cis-portfolio/account/{account_id}/document/import/transfer:
+    post:
+      tags:
+      - "Document"
+      summary: "Import Transfer Document"
+      parameters:
+      - name: "account_id"
+        in: "path"
+        description: "ID of the account belongs to user."
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "Successful response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content: {}
+      security:
+      - CustomAuthorizerRequest: []
+    options:
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+  /cis-portfolio/transfer:
+    get:
+      tags:
+      - "Transfer"
+      summary: "Transfer History Request"
+      parameters:
+      - name: "start"
+        in: "query"
+        description: "Filter transfers made after this date"
+        schema:
+          type: "string"
+      - name: "page_size"
+        in: "query"
+        description: "How many items returned on single call (page)"
+        schema:
+          type: "string"
+      - name: "page_number"
+        in: "query"
+        description: "Used to get results that are next in line"
+        schema:
+          type: "string"
+      - name: "end"
+        in: "query"
+        description: "Filter transfers made before this date"
+        schema:
+          type: "string"
+      - name: "account_ids"
+        in: "query"
+        description: "List of account ids in comma-seperated fashion to read transfers\
+          \ from"
+        schema:
+          type: "string"
+      - name: "order_by_field"
+        in: "query"
+        description: "Order result by given field"
+        schema:
+          type: "string"
+      - name: "order_by_direction"
+        in: "query"
+        description: "Ordering direction (asc|desc)"
+        schema:
+          type: "string"
+      - name: "portfolio_id"
+        in: "query"
+        description: "Id of portfolio to read trade history from"
+        schema:
+          type: "string"
+      - name: "assets"
+        in: "query"
+        description: "Filter transfers that are made with these asset(s)"
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "Successful response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content: {}
+      security:
+      - CustomAuthorizerRequest: []
+    options:
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+components:
+  schemas:
+    Empty:
+      type: "object"
+    PortfolioRequest:
+      required:
+      - "name"
+      type: "object"
+      properties:
+        name:
+          type: "string"
+    TradeRequest:
+      required:
+      - "base_amount"
+      - "price"
+      - "quote_amount"
+      - "symbol"
+      - "trade_ts"
+      - "type"
+      type: "object"
+      properties:
+        trade_ts:
+          type: "integer"
+        type:
+          type: "string"
+        symbol:
+          type: "string"
+        base_amount:
+          type: "number"
+        quote_amount:
+          type: "integer"
+        price:
+          type: "integer"
+    OrderRequest:
+      required:
+      - "amount"
+      - "price"
+      - "side"
+      - "symbol"
+      - "type"
+      type: "object"
+      properties:
+        symbol:
+          type: "string"
+        type:
+          type: "string"
+        side:
+          type: "string"
+        amount:
+          type: "integer"
+        price:
+          type: "integer"
+        exchangeSpecificParams:
+          type: "object"
+    CreateAccount:
+      required:
+      - "name"
+      - "type"
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        type:
+          type: "string"
+        exchange_information:
+          required:
+          - "credentials"
+          - "exchange_code"
+          - "exchange_name"
+          type: "object"
+          properties:
+            exchange_code:
+              type: "string"
+            exchange_name:
+              type: "string"
+            credentials:
+              type: "string"
+    UpdateAccount:
+      required:
+      - "name"
+      type: "object"
+      properties:
+        name:
+          type: "string"
+    TransferRequest:
+      required:
+      - "asset_amount"
+      - "asset_symbol"
+      - "transfer_ts"
+      - "type"
+      type: "object"
+      properties:
+        transfer_ts:
+          type: "integer"
+        type:
+          type: "string"
+        asset_symbol:
+          type: "string"
+        asset_amount:
+          type: "integer"
+  securitySchemes:
+    CustomAuthorizer:
+      type: "apiKey"
+      name: "Authorization"
+      in: "header"
+      x-amazon-apigateway-authtype: "custom"
+    CustomAuthorizerRequest:
+      type: "apiKey"
+      name: "Unused"
+      in: "header"
+      x-amazon-apigateway-authtype: "custom"
+x-tagGroups:
+- name: "Portfolio And Account"
+  tags:
+  - "Portfolio CRUD"
+  - "Account CRUD"
+  - "Account-Portfolio Relation"
+  - "Balance"
+  - "Trade"
+  - "Transfer"
+  - "Document"
+- name: "Exchange API"
+  tags:
+  - "Trading"
