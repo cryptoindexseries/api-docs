@@ -241,7 +241,7 @@ info:
      */
     function subscribe(insturments) {
         // First encode message
-        const encoded = decodeMessage({action: 'subscribe', data: insturments})
+        const encoded = encodeMessage({action: 'subscribe', data: insturments})
         // Send subscribe message
         socket.send(encoded)
     }
@@ -253,7 +253,7 @@ info:
      */
     function unsubscribe(instruments) {
         // First encode message
-        const encoded = decodeMessage({action: 'subscribe', data: insturments})
+        const encoded = encodeMessage({action: 'subscribe', data: insturments})
         // Send unsubscribe message
         socket.send(encoded);
     }
@@ -291,9 +291,10 @@ info:
             // If you don't your connection will closed.
             socket.send("3");
         } else if (message.data.startsWith(42)) {
-            // These are reqular messages with that requries simple encoding/decoding
+            // These are reqular messages which require simple encoding/decoding
             const message = decodeMessage(message.data);
-            handleRealtime(message);
+            // Use message payload as you wish
+            handleMessage(message);
         }
     }
     ```
