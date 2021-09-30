@@ -85,7 +85,7 @@ In order to receive updates for an instrument first you need to subscribe to an 
 ```node
 {
     "action" : "subscribe", // Our action is subscription
-    "symbols": ["BTC-USDT.BNB~TICKER"] // Multiple instrument can be add here
+    "data": ["BTC-USDT.BNB~TICKER"] // Multiple instrument can be add here
 }
 ```
 
@@ -156,7 +156,7 @@ To unsubscribe from an instrument WebSocket API expects a message like the follo
 ```node
 {
     "action" : "unsubscribe", // Our action is un-subscription
-    "symbols": ["BTC-USDT.BNB~TICKER"] // Multiple instrument can be add here
+    "data": ["BTC-USDT.BNB~TICKER"] // Multiple instrument can be add here
 }
 ```
 

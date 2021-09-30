@@ -90,7 +90,7 @@ info:
     ```node
     {
         "action" : "subscribe", // Our action is subscription
-        "symbols": ["BTC-USDT.BNB~TICKER"] // Multiple instrument can be add here
+        "data": ["BTC-USDT.BNB~TICKER"] // Multiple instrument can be add here
     }
     ```
 
@@ -161,7 +161,7 @@ info:
     ```node
     {
         "action" : "unsubscribe", // Our action is un-subscription
-        "symbols": ["BTC-USDT.BNB~TICKER"] // Multiple instrument can be add here
+        "data": ["BTC-USDT.BNB~TICKER"] // Multiple instrument can be add here
     }
     ```
 
