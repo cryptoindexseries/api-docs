@@ -312,7 +312,7 @@ tags:
 - name: "Document"
 - name: "Trading"
 paths:
-  /cis-portfolio/account/{account_id}/trade/document:
+  /portfolio/cis-portfolio/account/{account_id}/trade/document:
     get:
       tags:
       - "Trade"
@@ -352,7 +352,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Empty"
-  /cis-trading/{key_id}/trades:
+  /trading/cis-trading/{key_id}/trades:
     get:
       tags:
       - "Trading"
@@ -397,7 +397,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Empty"
-  /cis-portfolio/account/{account_id}/trade:
+  /portfolio/cis-portfolio/account/{account_id}/trade:
     post:
       tags:
       - "Trade"
@@ -443,7 +443,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Empty"
-  /cis-portfolio/account/{account_id}:
+  /portfolio/cis-portfolio/account/{account_id}:
     put:
       tags:
       - "Account CRUD"
@@ -510,7 +510,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Empty"
-  /cis-portfolio/account/{account_id}/document/export/trade:
+  /portfolio/cis-portfolio/account/{account_id}/document/export/trade:
     post:
       tags:
       - "Document"
@@ -550,7 +550,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Empty"
-  /cis-portfolio/account/{account_id}/transfer/{transfer_id}:
+  /portfolio/cis-portfolio/account/{account_id}/transfer/{transfer_id}:
     put:
       tags:
       - "Transfer"
@@ -627,7 +627,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Empty"
-  /cis-portfolio/account/{account_id}/document/export/transfer:
+  /portfolio/cis-portfolio/account/{account_id}/document/export/transfer:
     post:
       tags:
       - "Document"
@@ -667,7 +667,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Empty"
-  /cis-trading/{key_id}/balances:
+  /trading/cis-trading/{key_id}/balances:
     get:
       tags:
       - "Trading"
@@ -707,7 +707,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Empty"
-  /cis-portfolio/account/{account_id}/transfer:
+  /portfolio/cis-portfolio/account/{account_id}/transfer:
     post:
       tags:
       - "Transfer"
@@ -753,7 +753,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Empty"
-  /cis-portfolio/portfolio:
+  /portfolio/cis-portfolio/portfolio:
     get:
       tags:
       - "Portfolio CRUD"
@@ -806,7 +806,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Empty"
-  /cis-portfolio/account/{account_id}/trade/{trade_id}:
+  /portfolio/cis-portfolio/account/{account_id}/trade/{trade_id}:
     put:
       tags:
       - "Trade"
@@ -883,7 +883,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Empty"
-  /cis-portfolio/portfolio/{portfolio_id}/account:
+  /portfolio/cis-portfolio/portfolio/{portfolio_id}/account:
     get:
       tags:
       - "Account-Portfolio Relation"
@@ -923,7 +923,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Empty"
-  /cis-portfolio/portfolio/{portfolio_id}/account/{account_id}:
+  /portfolio/cis-portfolio/portfolio/{portfolio_id}/account/{account_id}:
     put:
       tags:
       - "Account-Portfolio Relation"
@@ -996,7 +996,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Empty"
-  /cis-portfolio/account/{account_id}/document/{document_id}:
+  /portfolio/cis-portfolio/account/{account_id}/document/{document_id}:
     get:
       tags:
       - "Document"
@@ -1042,7 +1042,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Empty"
-  /cis-portfolio/account/{account_id}/document/import/trade:
+  /portfolio/cis-portfolio/account/{account_id}/document/import/trade:
     post:
       tags:
       - "Document"
@@ -1082,7 +1082,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Empty"
-  /cis-portfolio/balance/history:
+  /portfolio/cis-portfolio/balance/history:
     get:
       tags:
       - "Balance"
@@ -1126,7 +1126,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Empty"
-  /cis-portfolio/account:
+  /portfolio/cis-portfolio/account:
     get:
       tags:
       - "Account CRUD"
@@ -1179,7 +1179,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Empty"
-  /cis-trading/{key_id}/order:
+  /trading/cis-trading/{key_id}/order:
     post:
       tags:
       - "Trading"
@@ -1225,7 +1225,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Empty"
-  /cis-trading/{key_id}/order/{order_id}:
+  /trading/cis-trading/{key_id}/order/{order_id}:
     get:
       tags:
       - "Trading"
@@ -1306,7 +1306,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Empty"
-  /cis-portfolio/balance:
+  /portfolio/cis-portfolio/balance:
     get:
       tags:
       - "Balance"
@@ -1345,7 +1345,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Empty"
-  /cis-portfolio/portfolio/{portfolio_id}:
+  /portfolio/cis-portfolio/portfolio/{portfolio_id}:
     put:
       tags:
       - "Portfolio CRUD"
@@ -1412,7 +1412,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Empty"
-  /cis-trading/{key_id}/order/open:
+  /trading/cis-trading/{key_id}/order/open:
     get:
       tags:
       - "Trading"
@@ -1457,7 +1457,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Empty"
-  /cis-portfolio/account/{account_id}/transfer/document:
+  /portfolio/cis-portfolio/account/{account_id}/transfer/document:
     get:
       tags:
       - "Transfer"
@@ -1497,7 +1497,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Empty"
-  /cis-portfolio/trade:
+  /portfolio/cis-portfolio/trade:
     get:
       tags:
       - "Trade"
@@ -1591,7 +1591,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Empty"
-  /cis-portfolio/account/{account_id}/document/import/transfer:
+  /portfolio/cis-portfolio/account/{account_id}/document/import/transfer:
     post:
       tags:
       - "Document"
@@ -1631,7 +1631,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Empty"
-  /cis-portfolio/transfer:
+  /portfolio/cis-portfolio/transfer:
     get:
       tags:
       - "Transfer"
