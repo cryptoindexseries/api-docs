@@ -79,7 +79,7 @@
 }
 }
 },
-"/api/Coin/GetCoin": {
+"/Coin/GetCoin": {
 "get": {
 "tags": [
 "Coin"
