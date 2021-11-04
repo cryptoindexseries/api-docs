@@ -1,0 +1,2136 @@
+---
+openapi: 3.0.1
+info:
+  title: CIS UNIFIED API
+  version: v2
+  x-logo:
+    url: https://cryptoindexseries.com/media/yk4nymvj/cis_logo_text_white_small-1.png?width=200&height=20
+    altText: Crypto Index Series
+paths:
+  "/Asset/GetAssetPrices":
+    get:
+      tags:
+      - Asset
+      summary: GetAssetPrices
+      description: Fetch a list of asset prices and change data for a list of assets
+        in a key currency
+      parameters:
+      - name: assets
+        in: query
+        description: comma separated list of asset symbols
+        required: true
+        schema:
+          type: string
+          description: comma separated list of asset symbols
+          example: BTC,ETH,ADA
+      - name: ccy
+        in: query
+        description: key currency
+        schema:
+          type: string
+          description: key currency
+          default: BTC
+          nullable: true
+          example: USD
+      responses:
+        '200':
+          description: Success
+    post:
+      tags:
+      - Asset
+      summary: GetAssetPrices
+      description: Fetch a list of asset prices and change data for a list of assets
+        in a key currency
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/get_asset_prices_request_model"
+          text/json:
+            schema:
+              "$ref": "#/components/schemas/get_asset_prices_request_model"
+          application/*+json:
+            schema:
+              "$ref": "#/components/schemas/get_asset_prices_request_model"
+      responses:
+        '200':
+          description: Success
+  "/Coin/GetCoin":
+    get:
+      tags:
+      - Coin
+      summary: GetCoin
+      description: Fetch Descriptive data for a coin
+      parameters:
+      - name: coin_symbol
+        in: query
+        description: The alphanumeric code of the coin to retrieve
+        required: true
+        schema:
+          type: string
+          description: The alphanumeric code of the coin to retrieve
+          example: BTC
+      - name: language_code
+        in: query
+        description: The code for the language
+        schema:
+          type: string
+          description: The code for the language
+          default: en
+          nullable: true
+          example: en
+      responses:
+        '200':
+          description: Coin data
+  "/Coin/GetAllCoins":
+    get:
+      tags:
+      - Coin
+      summary: GetAllCoins
+      description: Fetch a list of all coins and a small amount of descriptive data
+        for each
+      parameters:
+      - name: language_code
+        in: query
+        description: The code for the language
+        schema:
+          type: string
+          description: The code for the language
+          default: en
+          nullable: true
+          example: en
+      responses:
+        '200':
+          description: Coin List
+  "/Coin/GetCoinDominance":
+    get:
+      tags:
+      - Coin
+      summary: GetCoinDominance
+      description: Returns total mkt cap and top 10 coisn and their dominance in the
+        currency requested
+      parameters:
+      - name: ccy
+        in: query
+        description: The ccy code
+        schema:
+          type: string
+          description: The ccy code
+          default: USD
+          nullable: true
+          example: USD
+      responses:
+        '200':
+          description: Json Object containing total mkt cap and coin dominance
+          content:
+            text/plain:
+              schema:
+                type: string
+  "/Exchange/ExchangeInfo":
+    get:
+      tags:
+      - Exchange
+      summary: ExchangeInfo
+      description: Fetch exchange information
+      parameters:
+      - name: exchange_code
+        in: query
+        description: The code for the exchange
+        required: true
+        schema:
+          type: string
+          description: The code for the exchange
+          example: BNB
+      - name: language_code
+        in: query
+        description: The code for the language
+        schema:
+          type: string
+          description: The code for the language
+          default: en
+          nullable: true
+          example: en
+      responses:
+        '200':
+          description: Exchange Information
+  "/Exchange/ExchangeList":
+    get:
+      tags:
+      - Exchange
+      summary: ExchangeList
+      description: Fetch list of all exchanges
+      parameters:
+      - name: language_code
+        in: query
+        description: The code for the language
+        schema:
+          type: string
+          description: The code for the language
+          default: en
+          nullable: true
+          example: en
+      responses:
+        '200':
+          description: Exchange List
+  "/Exchange/ConnectableExchangeList":
+    get:
+      tags:
+      - Exchange
+      summary: ConnectableExchangeList
+      description: Fetch list of all exchanges that are connectable
+      parameters:
+      - name: language_code
+        in: query
+        description: The code for the language
+        schema:
+          type: string
+          description: The code for the language
+          default: en
+          nullable: true
+          example: en
+      responses:
+        '200':
+          description: Connectable Exchange List
+  "/Exchange/ExchangeProductList":
+    get:
+      tags:
+      - Exchange
+      summary: ExchangeProductList
+      description: Fetch list of all products on an exchange
+      parameters:
+      - name: exchange_code
+        in: query
+        description: The code for the exchange
+        required: true
+        schema:
+          type: string
+          description: The code for the exchange
+          example: BNB
+      responses:
+        '200':
+          description: Exchange List
+  "/Exchange/ExchangeAssetList":
+    get:
+      tags:
+      - Exchange
+      summary: ExchangeAssetList
+      description: Fetch list of all assets (fiat and crypto) recognised by the exchange
+        along with the equivalent CIS symbol for the asset
+      parameters:
+      - name: exchange_code
+        in: query
+        description: The code for the exchange
+        required: true
+        schema:
+          type: string
+          description: The code for the exchange
+          example: BNB
+      responses:
+        '200':
+          description: Exchange Asset List
+  "/Exchange/ProductInfo":
+    get:
+      tags:
+      - Exchange
+      summary: ProductInfo
+      description: Fetch relevant product info for a given product / exchange
+      parameters:
+      - name: cis_native_symbol
+        in: query
+        description: The CIS native symbol for the product (exchange code + "_" +
+          exchange native symbol for the product in upper case)
+        required: true
+        schema:
+          type: string
+          description: The CIS native symbol for the product (exchange code + "_"
+            + exchange native symbol for the product in upper case)
+          example: BNB_BTCUSDT
+      responses:
+        '200':
+          description: Exchange Product Info
+          content:
+            text/plain:
+              schema:
+                type: string
+  "/Exchange/ExchangeSpotInstrumentList":
+    get:
+      tags:
+      - Exchange
+      summary: ExchangeInstrumentList
+      description: Fetch list of all instruments for the exchange along with the equivalent
+        CIS symbol for the instrument
+      parameters:
+      - name: exchange_code
+        in: query
+        description: The code for the exchange
+        required: true
+        schema:
+          type: string
+          description: The code for the exchange
+          example: BNB
+      responses:
+        '200':
+          description: Exchange Instrument List
+  "/Index/GetAllIndices":
+    get:
+      tags:
+      - Index
+      summary: GetAllIndices
+      description: Fetch a list of all indices and a small amount of descriptive data
+        for each
+      parameters:
+      - name: language_code
+        in: query
+        description: The code for the language
+        schema:
+          type: string
+          description: The code for the language
+          default: en
+          nullable: true
+          example: en
+      responses:
+        '200':
+          description: Index List
+  "/Index/GetIndexFull":
+    get:
+      tags:
+      - Index
+      summary: GetIndexFull
+      description: Gets full data for a given index
+      parameters:
+      - name: index_code
+        in: query
+        description: The index code
+        required: true
+        schema:
+          type: string
+          description: The index code
+          example: CISBIG10
+      - name: ccy_code
+        in: query
+        description: The currency for the index data
+        schema:
+          type: string
+          description: The currency for the index data
+          default: BTC
+          nullable: true
+          example: USD
+      - name: language_code
+        in: query
+        description: The code for the language
+        schema:
+          type: string
+          description: The code for the language
+          default: en
+          nullable: true
+          example: en
+      responses:
+        '200':
+          description: Full Index Data
+  "/Index/GetIndexConstituents":
+    get:
+      tags:
+      - Index
+      summary: GetIndexConstituents
+      description: Gets full data for a given index
+      parameters:
+      - name: index_code
+        in: query
+        description: The index code
+        required: true
+        schema:
+          type: string
+          description: The index code
+          example: CISBIG10
+      - name: ccy_code
+        in: query
+        description: The currency for the index data
+        schema:
+          type: string
+          description: The currency for the index data
+          default: BTC
+          nullable: true
+          example: USD
+      - name: page_number
+        in: query
+        description: ''
+        schema:
+          type: integer
+          description: ''
+          format: int32
+          default: 1
+          example: 1
+      - name: page_size
+        in: query
+        description: ''
+        schema:
+          type: integer
+          description: ''
+          format: int32
+          default: 20
+          example: 20
+      - name: language_code
+        in: query
+        description: The code for the language
+        schema:
+          type: string
+          description: The code for the language
+          default: en
+          nullable: true
+          example: en
+      responses:
+        '200':
+          description: Index Constituents
+  "/Indicator/GetIndicatorList":
+    get:
+      tags:
+      - Indicator
+      summary: GetIndicatorList
+      description: Get a list of Indicators avaiable
+      responses:
+        '200':
+          description: A list of Indicators
+          content:
+            text/plain:
+              schema:
+                type: string
+  "/Indicator/GetIndicatorTemplates":
+    get:
+      tags:
+      - Indicator
+      summary: GetIndicatorTemplates
+      description: Get a list of Pre Set Templates
+      responses:
+        '200':
+          description: A list of Templates
+          content:
+            text/plain:
+              schema:
+                type: string
+  "/Indicator/GetIndicators":
+    post:
+      tags:
+      - Indicator
+      summary: GetIndicators
+      description: Request a list of Indicators for a symbol / interval
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/is_indicator_request"
+          text/json:
+            schema:
+              "$ref": "#/components/schemas/is_indicator_request"
+          application/*+json:
+            schema:
+              "$ref": "#/components/schemas/is_indicator_request"
+      responses:
+        '200':
+          description: A list of Calculated Indicators for the requested symbol /
+            interval / indicators
+          content:
+            text/plain:
+              schema:
+                type: string
+  "/Info":
+    get:
+      tags:
+      - Info
+      summary: Info
+      description: returna version and current time
+      responses:
+        '200':
+          description: ''
+  "/Metadata/GetLanguages":
+    get:
+      tags:
+      - Metadata
+      summary: GetLanguages
+      description: Gets a list of supported languages
+      parameters:
+      - name: page_number
+        in: query
+        description: ''
+        schema:
+          type: integer
+          description: ''
+          format: int32
+          default: 1
+          example: 1
+      - name: page_size
+        in: query
+        description: ''
+        schema:
+          type: integer
+          description: ''
+          format: int32
+          default: 1000
+          example: 20
+      responses:
+        '200':
+          description: Language List
+  "/Metadata/GetMetaData":
+    get:
+      tags:
+      - Metadata
+      summary: GetMetaData
+      description: Get full metadata for the application
+      parameters:
+      - name: language_code
+        in: query
+        description: The code for the language
+        schema:
+          type: string
+          description: The code for the language
+          default: en
+          nullable: true
+          example: en
+      responses:
+        '200':
+          description: Meta Data
+  "/Metadata/GetNewsTagsMetaData":
+    get:
+      tags:
+      - Metadata
+      summary: GetNewsTagsMetaData
+      description: Get News Meta Tags
+      parameters:
+      - name: language_code
+        in: query
+        description: The code for the language
+        schema:
+          type: string
+          description: The code for the language
+          default: en
+          nullable: true
+          example: en
+      responses:
+        '200':
+          description: News Meta Tags
+          content:
+            text/plain:
+              schema:
+                type: string
+  "/Metadata/GetNewsSources":
+    get:
+      tags:
+      - Metadata
+      summary: GetNewsSources
+      description: Get News Sources
+      parameters:
+      - name: language_code
+        in: query
+        schema:
+          type: string
+          default: en
+          nullable: true
+      responses:
+        '200':
+          description: News Sources
+          content:
+            text/plain:
+              schema:
+                type: string
+  "/News/NewsById":
+    get:
+      tags:
+      - News
+      summary: Retrieve a news article by its id
+      parameters:
+      - name: id
+        in: query
+        description: The id of the news article
+        schema:
+          type: string
+          description: The id of the news article
+          nullable: true
+      responses:
+        '200':
+          description: Success
+  "/News/NewsSearch":
+    get:
+      tags:
+      - News
+      summary: NewsSearch
+      description: Perform a search across all news data
+      parameters:
+      - name: news_sources
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          nullable: true
+          example: coin_desk
+      - name: tags
+        in: query
+        description: ''
+        schema:
+          type: array
+          items:
+            type: string
+          description: ''
+          nullable: true
+      - name: keywords_search
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          nullable: true
+          example: mining
+      - name: min_publication_datetime
+        in: query
+        description: ''
+        schema:
+          type: integer
+          description: ''
+          format: int64
+          nullable: true
+          example: 1589141374000
+      - name: max_publication_datetime
+        in: query
+        description: ''
+        schema:
+          type: integer
+          description: ''
+          format: int64
+          nullable: true
+          example: 1589141374000
+      - name: min_sentiment
+        in: query
+        description: ''
+        schema:
+          type: number
+          description: ''
+          format: double
+          nullable: true
+          example: -1
+      - name: max_sentiment
+        in: query
+        description: ''
+        schema:
+          type: number
+          description: ''
+          format: double
+          nullable: true
+          example: 1
+      - name: order_by
+        in: query
+        description: ''
+        schema:
+          type: array
+          items:
+            type: string
+          description: ''
+          nullable: true
+      - name: language_code
+        in: query
+        description: The code for the language
+        schema:
+          type: string
+          description: The code for the language
+          default: en
+          nullable: true
+          example: en
+      - name: page_size
+        in: query
+        description: ''
+        schema:
+          type: integer
+          description: ''
+          format: int32
+          default: 20
+          example: 20
+      - name: page_number
+        in: query
+        description: ''
+        schema:
+          type: integer
+          description: ''
+          format: int32
+          default: 1
+          example: 1
+      responses:
+        '200':
+          description: News Article List
+    post:
+      tags:
+      - News
+      summary: NewsSearch
+      description: Perform a search across all news data
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/news_search_model_body"
+          text/json:
+            schema:
+              "$ref": "#/components/schemas/news_search_model_body"
+          application/*+json:
+            schema:
+              "$ref": "#/components/schemas/news_search_model_body"
+      responses:
+        '200':
+          description: News Article List
+  "/News/NewsSentimentHistory":
+    get:
+      tags:
+      - News
+      summary: NewsSentimentHistory
+      description: Get a timeseries of News Sentiment
+      parameters:
+      - name: news_sources
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          nullable: true
+          example: coin_desk
+      - name: tags
+        in: query
+        description: ''
+        schema:
+          type: array
+          items:
+            type: string
+          description: ''
+          nullable: true
+      - name: keywords_search
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          nullable: true
+          example: mining
+      - name: min_publication_datetime
+        in: query
+        description: ''
+        schema:
+          type: integer
+          description: ''
+          format: int64
+          nullable: true
+          example: 1589141374000
+      - name: max_publication_datetime
+        in: query
+        description: ''
+        schema:
+          type: integer
+          description: ''
+          format: int64
+          nullable: true
+          example: 1589141374000
+      - name: language_code
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          default: en
+          nullable: true
+          example: en
+      - name: interval
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          default: 1d
+          nullable: true
+          example: 1d
+      - name: positive_sentiment_limit
+        in: query
+        description: ''
+        schema:
+          type: number
+          description: ''
+          format: double
+          default: 0.2
+          example: 0.2
+      - name: negative_sentiment_limit
+        in: query
+        description: ''
+        schema:
+          type: number
+          description: ''
+          format: double
+          default: -0.2
+          example: -0.2
+      responses:
+        '200':
+          description: News Sentiment History
+  "/Reports/GetSectorReports":
+    get:
+      tags:
+      - Reports
+      summary: GetSectorReports
+      description: Returns a list of reports for a sector
+      parameters:
+      - name: alphanumeric_code
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          nullable: true
+          example: FIN
+      - name: start_date_time
+        in: query
+        description: ''
+        schema:
+          type: integer
+          description: ''
+          format: int64
+          nullable: true
+          example: 1589141374000
+      - name: end_date_time
+        in: query
+        description: ''
+        schema:
+          type: integer
+          description: ''
+          format: int64
+          nullable: true
+          example: 1589141374000
+      responses:
+        '200':
+          description: Sector Report List
+  "/Search/SpotSearch":
+    get:
+      tags:
+      - Search
+      summary: SpotSearch
+      description: Search for spot symbols across the entire universe
+      parameters:
+      - name: search_string
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          nullable: true
+      - name: source_code
+        in: query
+        description: ''
+        schema:
+          type: array
+          items:
+            type: string
+          description: ''
+          nullable: true
+      - name: source_rating_code
+        in: query
+        description: ''
+        schema:
+          type: array
+          items:
+            type: string
+          description: ''
+          nullable: true
+      - name: is_exchange
+        in: query
+        description: ''
+        schema:
+          type: boolean
+          description: ''
+          nullable: true
+      - name: is_connectable
+        in: query
+        description: ''
+        schema:
+          type: boolean
+          description: ''
+          nullable: true
+      - name: base_asset
+        in: query
+        description: ''
+        schema:
+          type: array
+          items:
+            type: string
+          description: ''
+          nullable: true
+      - name: quoted_asset
+        in: query
+        description: ''
+        schema:
+          type: array
+          items:
+            type: string
+          description: ''
+          nullable: true
+      - name: order_by_field
+        in: query
+        description: ''
+        schema:
+          "$ref": "#/components/schemas/spot_search_order_by"
+      - name: order_by_direction
+        in: query
+        description: ''
+        schema:
+          "$ref": "#/components/schemas/order_by_direction"
+      - name: page_number
+        in: query
+        description: ''
+        schema:
+          type: integer
+          description: ''
+          format: int32
+          default: 1
+      - name: page_size
+        in: query
+        description: ''
+        schema:
+          type: integer
+          description: ''
+          format: int32
+          default: 20
+      - name: language_code
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          default: en
+          nullable: true
+      responses:
+        '200':
+          description: Spot list
+          content:
+            text/plain:
+              schema:
+                type: string
+    post:
+      tags:
+      - Search
+      summary: SpotSearch
+      description: Search for spot symbols across the entire universe
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/srch_spot_search_input_model"
+          text/json:
+            schema:
+              "$ref": "#/components/schemas/srch_spot_search_input_model"
+          application/*+json:
+            schema:
+              "$ref": "#/components/schemas/srch_spot_search_input_model"
+      responses:
+        '200':
+          description: Spot list
+          content:
+            text/plain:
+              schema:
+                type: string
+  "/Search/CoinSearch":
+    get:
+      tags:
+      - Search
+      summary: CoinSearch
+      description: Powerful search of our coin universe
+      parameters:
+      - name: coin_symbols
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          nullable: true
+          example: BTC,ETH
+      - name: search_string
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          nullable: true
+          example: ethereum
+      - name: algorithm
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          nullable: true
+          example: '1,2'
+      - name: asset_type
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          nullable: true
+          example: '1,2'
+      - name: business_classification
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          nullable: true
+          example: '1,2'
+      - name: business_sub_classification
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          nullable: true
+          example: '1,2'
+      - name: consensus_model
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          nullable: true
+          example: '1,2'
+      - name: decentralisation_perspective
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          nullable: true
+          example: '1,2'
+      - name: transaction_anonimity
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          nullable: true
+          example: '1,2'
+      - name: mkt_cap_min
+        in: query
+        description: ''
+        schema:
+          type: number
+          description: ''
+          format: double
+          nullable: true
+          example: 1000000
+      - name: mkt_cap_max
+        in: query
+        description: ''
+        schema:
+          type: number
+          description: ''
+          format: double
+          nullable: true
+          example: 10000000
+      - name: chgpct_24h_min
+        in: query
+        description: ''
+        schema:
+          type: number
+          description: ''
+          format: double
+          nullable: true
+          example: -0.1
+      - name: chgpct_24h_max
+        in: query
+        description: ''
+        schema:
+          type: number
+          description: ''
+          format: double
+          nullable: true
+          example: 0.1
+      - name: total_coin_volume_24h_min
+        in: query
+        description: ''
+        schema:
+          type: number
+          description: ''
+          format: double
+          nullable: true
+          example: 1000000
+      - name: total_coin_volume_24h_max
+        in: query
+        description: ''
+        schema:
+          type: number
+          description: ''
+          format: double
+          nullable: true
+          example: 1000000
+      - name: ts_cutoff
+        in: query
+        description: ''
+        schema:
+          type: integer
+          description: ''
+          format: int64
+          nullable: true
+          example: 1589141374000
+      - name: market_cap_category
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          nullable: true
+          example: '1,2'
+      - name: volume_category
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          nullable: true
+          example: '1'
+      - name: volatility_category
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          nullable: true
+          example: '2,3'
+      - name: perf_search
+        in: query
+        description: ''
+        schema:
+          type: array
+          items:
+            type: string
+          description: ''
+          nullable: true
+      - name: order_by
+        in: query
+        description: ''
+        schema:
+          type: array
+          items:
+            type: string
+          description: ''
+          nullable: true
+      - name: page_size
+        in: query
+        description: ''
+        schema:
+          type: integer
+          description: ''
+          format: int32
+          default: 20
+          example: 20
+      - name: page_number
+        in: query
+        description: ''
+        schema:
+          type: integer
+          description: ''
+          format: int32
+          default: 1
+          example: 1
+      - name: language_code
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          default: en
+          nullable: true
+          example: en
+      - name: ccy
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          default: BTC
+          nullable: true
+          example: BTC
+      - name: stablecoin
+        in: query
+        description: ''
+        schema:
+          type: boolean
+          description: ''
+          nullable: true
+          example: true
+      - name: mineable
+        in: query
+        description: ''
+        schema:
+          type: boolean
+          description: ''
+          nullable: true
+          example: true
+      - name: is_defi
+        in: query
+        description: ''
+        schema:
+          type: boolean
+          description: ''
+          nullable: true
+          example: true
+      responses:
+        '200':
+          description: Coin List
+          content:
+            text/plain:
+              schema:
+                type: string
+    post:
+      tags:
+      - Search
+      summary: CoinSearch
+      description: Powerful search of our coin universe
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/coin_search_model_body"
+          text/json:
+            schema:
+              "$ref": "#/components/schemas/coin_search_model_body"
+          application/*+json:
+            schema:
+              "$ref": "#/components/schemas/coin_search_model_body"
+      responses:
+        '200':
+          description: Coin List
+  "/Search/IndexSearch":
+    get:
+      tags:
+      - Search
+      summary: IndexSearch
+      description: Powerful search of our index universe
+      parameters:
+      - name: index_symbols
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          nullable: true
+          example: CISBIG10,CISBIG50
+      - name: business_classification
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          nullable: true
+          example: '1'
+      - name: index_mkt_cap_min
+        in: query
+        description: ''
+        schema:
+          type: number
+          description: ''
+          format: double
+          nullable: true
+          example: 10000000
+      - name: index_mkt_cap_max
+        in: query
+        description: ''
+        schema:
+          type: number
+          description: ''
+          format: double
+          nullable: true
+          example: 10000000
+      - name: chgpct_24h_min
+        in: query
+        description: ''
+        schema:
+          type: number
+          description: ''
+          format: double
+          nullable: true
+          example: -0.1
+      - name: chgpct_24h_max
+        in: query
+        description: ''
+        schema:
+          type: number
+          description: ''
+          format: double
+          nullable: true
+          example: 0.1
+      - name: total_index_volume_24h_min
+        in: query
+        description: ''
+        schema:
+          type: number
+          description: ''
+          format: double
+          nullable: true
+          example: 1000000
+      - name: total_index_volume_24h_max
+        in: query
+        description: ''
+        schema:
+          type: number
+          description: ''
+          format: double
+          nullable: true
+          example: 1000000
+      - name: ts_cutoff
+        in: query
+        description: ''
+        schema:
+          type: integer
+          description: ''
+          format: int64
+          nullable: true
+          example: 1589141374000
+      - name: perf_search
+        in: query
+        description: ''
+        schema:
+          type: array
+          items:
+            type: string
+          description: ''
+          nullable: true
+      - name: order_by
+        in: query
+        description: ''
+        schema:
+          type: array
+          items:
+            type: string
+          description: ''
+          nullable: true
+      - name: page_size
+        in: query
+        description: ''
+        schema:
+          type: integer
+          description: ''
+          format: int32
+          default: 20
+          example: 20
+      - name: page_number
+        in: query
+        description: ''
+        schema:
+          type: integer
+          description: ''
+          format: int32
+          default: 1
+          example: 1
+      - name: language_code
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          default: en
+          nullable: true
+          example: en
+      - name: ccy
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          default: USD
+          nullable: true
+          example: BTC
+      responses:
+        '200':
+          description: Index List
+  "/Search/QuickSearch":
+    get:
+      tags:
+      - Search
+      summary: QuickSearch
+      description: Quickly search for coins, indices and sectors
+      parameters:
+      - name: search_string
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          nullable: true
+          example: ABC
+      - name: page_size
+        in: query
+        description: ''
+        schema:
+          type: integer
+          description: ''
+          format: int32
+          default: 5
+          example: 10
+      - name: page_number
+        in: query
+        description: ''
+        schema:
+          type: integer
+          description: ''
+          format: int32
+          default: 1
+          example: 1
+      - name: language_code
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          default: en
+          nullable: true
+          example: en
+      responses:
+        '200':
+          description: Quick Search Results
+  "/Search/QuickSearchCoin":
+    get:
+      tags:
+      - Search
+      summary: QuickSearchCoin
+      description: Quickly search for coins
+      parameters:
+      - name: search_string
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          nullable: true
+          example: ABC
+      - name: page_size
+        in: query
+        description: ''
+        schema:
+          type: integer
+          description: ''
+          format: int32
+          default: 5
+          example: 10
+      - name: page_number
+        in: query
+        description: ''
+        schema:
+          type: integer
+          description: ''
+          format: int32
+          default: 1
+          example: 1
+      - name: language_code
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          default: en
+          nullable: true
+          example: en
+      responses:
+        '200':
+          description: Quick Search Results
+  "/Search/QuickSearchIndex":
+    get:
+      tags:
+      - Search
+      summary: QuickSearchIndex
+      description: Quickly search for indices
+      parameters:
+      - name: search_string
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          nullable: true
+          example: ABC
+      - name: page_size
+        in: query
+        description: ''
+        schema:
+          type: integer
+          description: ''
+          format: int32
+          default: 5
+          example: 10
+      - name: page_number
+        in: query
+        description: ''
+        schema:
+          type: integer
+          description: ''
+          format: int32
+          default: 1
+          example: 1
+      - name: language_code
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          default: en
+          nullable: true
+          example: en
+      responses:
+        '200':
+          description: Quick Search Results
+  "/Search/QuickSearchSector":
+    get:
+      tags:
+      - Search
+      summary: QuickSearchSector
+      description: Quickly search for Sectors
+      parameters:
+      - name: search_string
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          nullable: true
+          example: ABC
+      - name: page_size
+        in: query
+        description: ''
+        schema:
+          type: integer
+          description: ''
+          format: int32
+          default: 5
+          example: 10
+      - name: page_number
+        in: query
+        description: ''
+        schema:
+          type: integer
+          description: ''
+          format: int32
+          default: 1
+          example: 1
+      - name: language_code
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          default: en
+          nullable: true
+          example: en
+      responses:
+        '200':
+          description: Quick Search Results
+  "/Sector/GetSectorSummary":
+    get:
+      tags:
+      - Sector
+      summary: GetSectorSummary
+      description: Get a summary of all sectors
+      parameters:
+      - name: order_by
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          nullable: true
+          example: change_24h_pct,desc
+      - name: language_code
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          default: en
+          nullable: true
+          example: en
+      - name: ccy
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          default: BTC
+          nullable: true
+          example: BTC
+      responses:
+        '200':
+          description: Sector Summary List
+  "/Sector/GetSingleSectorSummary":
+    get:
+      tags:
+      - Sector
+      summary: GetSingleSectorSummary
+      description: Get a summary for a specific sector
+      parameters:
+      - name: alphanumeric_code
+        in: query
+        description: ''
+        required: true
+        schema:
+          type: string
+          description: ''
+          example: FIN
+      - name: language_code
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          default: en
+          nullable: true
+          example: en
+      - name: ccy
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          default: BTC
+          nullable: true
+          example: BTC
+      responses:
+        '200':
+          description: Sector Summary
+  "/Sector/GetSingleSectorCoins":
+    get:
+      tags:
+      - Sector
+      summary: GetSingleSectorCoins
+      description: Get Coins in Sector
+      parameters:
+      - name: alphanumeric_code
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: language_code
+        in: query
+        schema:
+          type: string
+          default: en
+          nullable: true
+      - name: ccy
+        in: query
+        schema:
+          type: string
+          default: BTC
+          nullable: true
+      responses:
+        '200':
+          description: Success
+  "/Sector/GetSingleSectorCoinPerformanceDetail":
+    get:
+      tags:
+      - Sector
+      summary: GetSingleSectorCoinPerformanceDetail
+      description: Get coins in the sector with their performance data
+      parameters:
+      - name: alphanumeric_code
+        in: query
+        description: ''
+        required: true
+        schema:
+          type: string
+          description: ''
+          example: FIN
+      - name: language_code
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          default: en
+          nullable: true
+          example: en
+      - name: ccy
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          default: BTC
+          nullable: true
+          example: BTC
+      responses:
+        '200':
+          description: Coin Performance List
+  "/Sector/GetSingleSectorCoinPerformanceDetailSummary":
+    get:
+      tags:
+      - Sector
+      summary: GetSingleSectorCoinPerformanceDetailSummary
+      description: Get coins in the sector with their performance data for the top
+        and bottom performers
+      parameters:
+      - name: alphanumeric_code
+        in: query
+        description: ''
+        required: true
+        schema:
+          type: string
+          description: ''
+          example: FIN
+      - name: language_code
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          default: en
+          nullable: true
+          example: en
+      - name: ccy
+        in: query
+        description: ''
+        schema:
+          type: string
+          description: ''
+          default: BTC
+          nullable: true
+          example: BTC
+      responses:
+        '200':
+          description: Coin Performance Lists
+  "/Timeseries/GetTimeseries":
+    get:
+      tags:
+      - Timeseries
+      summary: GetTimeseries
+      description: Get Timeseries for a symbol
+      parameters:
+      - name: symbol
+        in: query
+        description: Either cis_symbol OR cis_native_symbol is required
+        schema:
+          type: string
+          description: Either cis_symbol OR cis_native_symbol is required
+          nullable: true
+          example: BTC-USDT.CISCALC
+      - name: cis_native_symbol
+        in: query
+        description: Either cis_symbol OR cis_native_symbol is required
+        schema:
+          type: string
+          description: Either cis_symbol OR cis_native_symbol is required
+          nullable: true
+          example: BNB_BTCUSDT
+      - name: interval
+        in: query
+        description: tick,1m,5m,15m,30m,60m,1d
+        schema:
+          type: string
+          description: tick,1m,5m,15m,30m,60m,1d
+          nullable: true
+          example: 1d
+      - name: start
+        in: query
+        description: Unix ms timestamp
+        schema:
+          type: integer
+          description: Unix ms timestamp
+          format: int64
+          nullable: true
+          example: 1588756853000
+      - name: end
+        in: query
+        description: Unix ms timestamp
+        schema:
+          type: integer
+          description: Unix ms timestamp
+          format: int64
+          nullable: true
+          example: 1588756853000
+      - name: limit
+        in: query
+        description: max 2000
+        schema:
+          type: integer
+          description: max 2000
+          format: int32
+          nullable: true
+          example: 1000
+      responses:
+        '200':
+          description: Timeseries data
+          content:
+            text/plain:
+              schema:
+                type: string
+  "/Timeseries/GetAssetPricesByDate":
+    get:
+      tags:
+      - Timeseries
+      summary: GetAssetPricesByDate
+      description: Fetch prices for all assets in db for a given date / key ccy
+      parameters:
+      - name: ccy
+        in: query
+        description: The key currency to fetch pricing data in
+        schema:
+          type: string
+          description: The key currency to fetch pricing data in
+          default: USD
+          nullable: true
+      - name: ts
+        in: query
+        description: The unix timestamp to retrieve asset pricing for, null returns
+          the previous close
+        schema:
+          type: integer
+          description: The unix timestamp to retrieve asset pricing for, null returns
+            the previous close
+          format: int64
+          nullable: true
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: string
+  "/XRef/GetAssetsBySource":
+    get:
+      tags:
+      - XRef
+      summary: GetAssetsBySource
+      description: Fetch asset xref mappings for a list of source codes
+      parameters:
+      - name: source_codes
+        in: query
+        description: Comma separated list of source codes
+        schema:
+          type: string
+          description: Comma separated list of source codes
+          nullable: true
+          example: BNB,GEM,HUO
+      responses:
+        '200':
+          description: Success
+  "/XRef/GetSpotSymbolsBySource":
+    get:
+      tags:
+      - XRef
+      summary: GetSpotSymbolsBySource
+      description: Fetch spot instruments xref mappings for a soure_code
+      parameters:
+      - name: source_code
+        in: query
+        description: Source code to search on
+        required: true
+        schema:
+          type: string
+          description: Source code to search on
+          example: BNB
+      - name: page_number
+        in: query
+        description: Page Number
+        schema:
+          type: integer
+          description: Page Number
+          format: int32
+          default: 1
+          example: 1
+      - name: page_size
+        in: query
+        description: Page Size (Max 1000)
+        schema:
+          type: integer
+          description: Page Size (Max 1000)
+          format: int32
+          default: 1000
+          example: 100
+      - name: dt
+        in: query
+        description: Unix timestamp (milliseconds)
+        schema:
+          type: integer
+          description: Unix timestamp (milliseconds)
+          format: int64
+          nullable: true
+          example: 1499865549590
+      responses:
+        '200':
+          description: Success
+components:
+  schemas:
+    get_asset_prices_request_model:
+      required:
+      - assets
+      type: object
+      properties:
+        assets:
+          type: string
+        ccy:
+          type: string
+          nullable: true
+      additionalProperties: false
+    indicator_request:
+      type: object
+      properties:
+        indicator_code:
+          type: string
+          nullable: true
+        indicator_ts:
+          type: integer
+          format: int64
+          nullable: true
+        parameters:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties: false
+          nullable: true
+      additionalProperties: false
+    is_indicator_request:
+      type: object
+      properties:
+        symbol:
+          type: string
+          nullable: true
+        cis_native_symbol:
+          type: string
+          nullable: true
+        interval:
+          type: string
+          nullable: true
+        indicator_requests:
+          type: array
+          items:
+            "$ref": "#/components/schemas/indicator_request"
+          nullable: true
+      additionalProperties: false
+    news_search_model_body:
+      type: object
+      properties:
+        news_sources:
+          type: string
+          nullable: true
+        tags:
+          type: array
+          items:
+            type: string
+          nullable: true
+        keywords_search:
+          type: string
+          nullable: true
+        min_publication_datetime:
+          type: integer
+          format: int64
+          nullable: true
+        max_publication_datetime:
+          type: integer
+          format: int64
+          nullable: true
+        min_sentiment:
+          type: number
+          format: double
+          nullable: true
+        max_sentiment:
+          type: number
+          format: double
+          nullable: true
+        order_by:
+          type: array
+          items:
+            type: string
+          nullable: true
+        language_code:
+          type: string
+          nullable: true
+        page_size:
+          type: integer
+          format: int32
+        page_number:
+          type: integer
+          format: int32
+      additionalProperties: false
+    spot_search_order_by:
+      enum:
+      - symbol
+      - n
+      - v
+      - vto
+      - chgpct
+      type: string
+    order_by_direction:
+      enum:
+      - asc
+      - desc
+      type: string
+    srch_spot_search_input_model:
+      type: object
+      properties:
+        search_string:
+          type: string
+          nullable: true
+        source_code:
+          type: array
+          items:
+            type: string
+          nullable: true
+        source_rating_code:
+          type: array
+          items:
+            type: string
+          nullable: true
+        is_exchange:
+          type: boolean
+          nullable: true
+        is_connectable:
+          type: boolean
+          nullable: true
+        base_asset:
+          type: array
+          items:
+            type: string
+          nullable: true
+        quoted_asset:
+          type: array
+          items:
+            type: string
+          nullable: true
+        page_number:
+          type: integer
+          format: int32
+        page_size:
+          type: integer
+          format: int32
+        order_by_field:
+          "$ref": "#/components/schemas/spot_search_order_by"
+        order_by_direction:
+          "$ref": "#/components/schemas/order_by_direction"
+        language_code:
+          type: string
+          nullable: true
+      additionalProperties: false
+    coin_search_model_body:
+      type: object
+      properties:
+        coin_symbols:
+          type: string
+          nullable: true
+        search_string:
+          type: string
+          nullable: true
+        algorithm:
+          type: string
+          nullable: true
+        asset_type:
+          type: string
+          nullable: true
+        business_classification:
+          type: string
+          nullable: true
+        business_sub_classification:
+          type: string
+          nullable: true
+        consensus_model:
+          type: string
+          nullable: true
+        decentralisation_perspective:
+          type: string
+          nullable: true
+        transaction_anonimity:
+          type: string
+          nullable: true
+        mkt_cap_min:
+          type: number
+          format: double
+          nullable: true
+        mkt_cap_max:
+          type: number
+          format: double
+          nullable: true
+        chgpct_24h_min:
+          type: number
+          format: double
+          nullable: true
+        chgpct_24h_max:
+          type: number
+          format: double
+          nullable: true
+        total_coin_volume_24h_min:
+          type: number
+          format: double
+          nullable: true
+        total_coin_volume_24h_max:
+          type: number
+          format: double
+          nullable: true
+        ts_cutoff:
+          type: integer
+          format: int64
+          nullable: true
+        perf_search:
+          type: array
+          items:
+            type: string
+          nullable: true
+        order_by:
+          type: array
+          items:
+            type: string
+          nullable: true
+        page_size:
+          type: integer
+          format: int32
+        page_number:
+          type: integer
+          format: int32
+        language_code:
+          type: string
+          nullable: true
+        ccy:
+          type: string
+          nullable: true
+        market_cap_category:
+          type: string
+          nullable: true
+        volume_category:
+          type: string
+          nullable: true
+        volatility_category:
+          type: string
+          nullable: true
+        mineable:
+          type: boolean
+          nullable: true
+        stablecoin:
+          type: boolean
+          nullable: true
+        is_defi:
+          type: boolean
+          nullable: true
+      additionalProperties: false
+tags:
+- name: Coin
+  description: Endpoints for accessing coin data
+  x-tag-expanded: true
+- name: Exchange
+  description: Exchange Data Endpoints
+  x-tag-expanded: false
+- name: Index
+  description: Endpoints for accessing Index data
+- name: Info
+  description: General API Info
+- name: Metadata
+  description: Endpoints for accessing metadata
+- name: News
+  description: News Endpoints
+- name: Reports
+  description: Reports Endpoints
+- name: Search
+  description: Search Endpoints
+- name: Sector
+  description: Sector Endpoints
+- name: Timeseries
+  description: Timeseries Endpoints
+- name: Asset
+  description: Endpoints for accessing asset data
+- name: Indicator
+  description: Indicator Endpoints
+- name: XRef
+  description: Endpoints for accessing xref data
