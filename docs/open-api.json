@@ -2991,11 +2991,13 @@
 "tags": [
 {
 "name": "Coin",
-"description": "Endpoints for accessing coin data"
+"description": "Endpoints for accessing coin data",
+  "x-tag-expanded":true
 },
 {
 "name": "Exchange",
 "description": "Exchange Data Endpoints"
+    "x-tag-expanded":false
 },
 {
 "name": "Index",
