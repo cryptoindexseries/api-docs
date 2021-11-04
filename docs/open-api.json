@@ -79,7 +79,7 @@
 }
 }
 },
-"/Coin/GetCoin": {
+"/api/Coin/GetCoin": {
 "get": {
 "tags": [
 "Coin"
@@ -118,7 +118,7 @@
 }
 }
 },
-"/Coin/GetAllCoins": {
+"/api/Coin/GetAllCoins": {
 "get": {
 "tags": [
 "Coin"
@@ -146,7 +146,7 @@
 }
 }
 },
-"/Coin/GetCoinDominance": {
+"/api/Coin/GetCoinDominance": {
 "get": {
 "tags": [
 "Coin"
@@ -181,7 +181,7 @@
 }
 }
 },
-"/Exchange/ExchangeInfo": {
+"/api/Exchange/ExchangeInfo": {
 "get": {
 "tags": [
 "Exchange"
@@ -220,7 +220,7 @@
 }
 }
 },
-"/Exchange/ExchangeList": {
+"/api/Exchange/ExchangeList": {
 "get": {
 "tags": [
 "Exchange"
@@ -248,7 +248,7 @@
 }
 }
 },
-"/Exchange/ConnectableExchangeList": {
+"/api/Exchange/ConnectableExchangeList": {
 "get": {
 "tags": [
 "Exchange"
@@ -276,7 +276,7 @@
 }
 }
 },
-"/Exchange/ExchangeProductList": {
+"/api/Exchange/ExchangeProductList": {
 "get": {
 "tags": [
 "Exchange"
@@ -303,7 +303,7 @@
 }
 }
 },
-"/Exchange/ExchangeAssetList": {
+"/api/Exchange/ExchangeAssetList": {
 "get": {
 "tags": [
 "Exchange"
@@ -330,7 +330,7 @@
 }
 }
 },
-"/Exchange/ProductInfo": {
+"/api/Exchange/ProductInfo": {
 "get": {
 "tags": [
 "Exchange"
@@ -364,7 +364,7 @@
 }
 }
 },
-"/Exchange/ExchangeSpotInstrumentList": {
+"/api/Exchange/ExchangeSpotInstrumentList": {
 "get": {
 "tags": [
 "Exchange"
@@ -391,7 +391,7 @@
 }
 }
 },
-"/Index/GetAllIndices": {
+"/api/Index/GetAllIndices": {
 "get": {
 "tags": [
 "Index"
@@ -419,7 +419,7 @@
 }
 }
 },
-"/Index/GetIndexFull": {
+"/api/Index/GetIndexFull": {
 "get": {
 "tags": [
 "Index"
@@ -470,7 +470,7 @@
 }
 }
 },
-"/Index/GetIndexConstituents": {
+"/api/Index/GetIndexConstituents": {
 "get": {
 "tags": [
 "Index"
@@ -545,7 +545,7 @@
 }
 }
 },
-"/Indicator/GetIndicatorList": {
+"/api/Indicator/GetIndicatorList": {
 "get": {
 "tags": [
 "Indicator"
@@ -566,7 +566,7 @@
 }
 }
 },
-"/Indicator/GetIndicatorTemplates": {
+"/api/Indicator/GetIndicatorTemplates": {
 "get": {
 "tags": [
 "Indicator"
@@ -587,7 +587,7 @@
 }
 }
 },
-"/Indicator/GetIndicators": {
+"/api/Indicator/GetIndicators": {
 "post": {
 "tags": [
 "Indicator"
@@ -627,7 +627,7 @@
 }
 }
 },
-"/Info": {
+"/api/Info": {
 "get": {
 "tags": [
 "Info"
@@ -641,7 +641,7 @@
 }
 }
 },
-"/Metadata/GetLanguages": {
+"/api/Metadata/GetLanguages": {
 "get": {
 "tags": [
 "Metadata"
@@ -681,7 +681,7 @@
 }
 }
 },
-"/Metadata/GetMetaData": {
+"/api/Metadata/GetMetaData": {
 "get": {
 "tags": [
 "Metadata"
@@ -709,7 +709,7 @@
 }
 }
 },
-"/Metadata/GetNewsTagsMetaData": {
+"/api/Metadata/GetNewsTagsMetaData": {
 "get": {
 "tags": [
 "Metadata"
@@ -744,7 +744,7 @@
 }
 }
 },
-"/Metadata/GetNewsSources": {
+"/api/Metadata/GetNewsSources": {
 "get": {
 "tags": [
 "Metadata"
@@ -776,7 +776,7 @@
 }
 }
 },
-"/News/NewsById": {
+"/api/News/NewsById": {
 "get": {
 "tags": [
 "News"
@@ -801,7 +801,7 @@
 }
 }
 },
-"/News/NewsSearch": {
+"/api/News/NewsSearch": {
 "get": {
 "tags": [
 "News"
@@ -981,7 +981,7 @@
 }
 }
 },
-"/News/NewsSentimentHistory": {
+"/api/News/NewsSentimentHistory": {
 "get": {
 "tags": [
 "News"
@@ -1104,7 +1104,7 @@
 }
 }
 },
-"/Reports/GetSectorReports": {
+"/api/Reports/GetSectorReports": {
 "get": {
 "tags": [
 "Reports"
@@ -1155,7 +1155,7 @@
 }
 }
 },
-"/Search/SpotSearch": {
+"/api/Search/SpotSearch": {
 "get": {
 "tags": [
 "Search"
@@ -1348,7 +1348,7 @@
 }
 }
 },
-"/Search/CoinSearch": {
+"/api/Search/CoinSearch": {
 "get": {
 "tags": [
 "Search"
@@ -1726,7 +1726,7 @@
 }
 }
 },
-"/Search/IndexSearch": {
+"/api/Search/IndexSearch": {
 "get": {
 "tags": [
 "Search"
@@ -1922,7 +1922,7 @@
 }
 }
 },
-"/Search/QuickSearch": {
+"/api/Search/QuickSearch": {
 "get": {
 "tags": [
 "Search"
@@ -1985,7 +1985,7 @@
 }
 }
 },
-"/Search/QuickSearchCoin": {
+"/api/Search/QuickSearchCoin": {
 "get": {
 "tags": [
 "Search"
@@ -2048,7 +2048,7 @@
 }
 }
 },
-"/Search/QuickSearchIndex": {
+"/api/Search/QuickSearchIndex": {
 "get": {
 "tags": [
 "Search"
@@ -2111,7 +2111,7 @@
 }
 }
 },
-"/Search/QuickSearchSector": {
+"/api/Search/QuickSearchSector": {
 "get": {
 "tags": [
 "Search"
@@ -2174,7 +2174,7 @@
 }
 }
 },
-"/Sector/GetSectorSummary": {
+"/api/Sector/GetSectorSummary": {
 "get": {
 "tags": [
 "Sector"
@@ -2225,7 +2225,7 @@
 }
 }
 },
-"/Sector/GetSingleSectorSummary": {
+"/api/Sector/GetSingleSectorSummary": {
 "get": {
 "tags": [
 "Sector"
@@ -2276,7 +2276,7 @@
 }
 }
 },
-"/Sector/GetSingleSectorCoins": {
+"/api/Sector/GetSingleSectorCoins": {
 "get": {
 "tags": [
 "Sector"
@@ -2318,7 +2318,7 @@
 }
 }
 },
-"/Sector/GetSingleSectorCoinPerformanceDetail": {
+"/api/Sector/GetSingleSectorCoinPerformanceDetail": {
 "get": {
 "tags": [
 "Sector"
@@ -2369,7 +2369,7 @@
 }
 }
 },
-"/Sector/GetSingleSectorCoinPerformanceDetailSummary": {
+"/api/Sector/GetSingleSectorCoinPerformanceDetailSummary": {
 "get": {
 "tags": [
 "Sector"
@@ -2420,7 +2420,7 @@
 }
 }
 },
-"/Timeseries/GetTimeseries": {
+"/api/Timeseries/GetTimeseries": {
 "get": {
 "tags": [
 "Timeseries"
@@ -2512,7 +2512,7 @@
 }
 }
 },
-"/Timeseries/GetAssetPricesByDate": {
+"/api/Timeseries/GetAssetPricesByDate": {
 "get": {
 "tags": [
 "Timeseries"
@@ -2557,7 +2557,7 @@
 }
 }
 },
-"/XRef/GetAssetsBySource": {
+"/api/XRef/GetAssetsBySource": {
 "get": {
 "tags": [
 "XRef"
@@ -2584,7 +2584,7 @@
 }
 }
 },
-"/XRef/GetSpotSymbolsBySource": {
+"/api/XRef/GetSpotSymbolsBySource": {
 "get": {
 "tags": [
 "XRef"
