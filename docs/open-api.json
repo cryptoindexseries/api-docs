@@ -2996,7 +2996,7 @@
 },
 {
 "name": "Exchange",
-"description": "Exchange Data Endpoints"
+"description": "Exchange Data Endpoints",
     "x-tag-expanded":false
 },
 {
