@@ -1,8 +1,8 @@
 {
 "openapi": "3.0.1",
 "info": {
-"title": "CIS TRADER API",
-"version": "v1",
+"title": "CIS UNIFIED API",
+"version": "v2",
 "x-logo": {
 "url": "https://cryptoindexseries.com/media/ivrefrk2/cis_logo_text_colour-1.png?height=50",
 "altText": "Crypto Index Series"
