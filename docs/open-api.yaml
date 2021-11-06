@@ -10,7 +10,7 @@ paths:
   "/Asset/GetAssetPrices":
     get:
       tags:
-      - Asset
+      - Data/Asset
       summary: GetAssetPrices
       description: Fetch a list of asset prices and change data for a list of assets
         in a key currency
@@ -37,7 +37,7 @@ paths:
           description: Success
     post:
       tags:
-      - Asset
+      - Data/Asset
       summary: GetAssetPrices
       description: Fetch a list of asset prices and change data for a list of assets
         in a key currency
@@ -58,7 +58,7 @@ paths:
   "/Coin/GetCoin":
     get:
       tags:
-      - Coin
+      - Data/Coin
       summary: GetCoin
       description: Fetch Descriptive data for a coin
       parameters:
@@ -85,7 +85,7 @@ paths:
   "/Coin/GetAllCoins":
     get:
       tags:
-      - Coin
+      - Data/Coin
       summary: GetAllCoins
       description: Fetch a list of all coins and a small amount of descriptive data
         for each
@@ -105,7 +105,7 @@ paths:
   "/Coin/GetCoinDominance":
     get:
       tags:
-      - Coin
+      - Data/Coin
       summary: GetCoinDominance
       description: Returns total mkt cap and top 10 coisn and their dominance in the
         currency requested
@@ -129,7 +129,7 @@ paths:
   "/Exchange/ExchangeInfo":
     get:
       tags:
-      - Exchange
+      - Data/Exchange
       summary: ExchangeInfo
       description: Fetch exchange information
       parameters:
@@ -156,7 +156,7 @@ paths:
   "/Exchange/ExchangeList":
     get:
       tags:
-      - Exchange
+      - Data/Exchange
       summary: ExchangeList
       description: Fetch list of all exchanges
       parameters:
@@ -175,7 +175,7 @@ paths:
   "/Exchange/ConnectableExchangeList":
     get:
       tags:
-      - Exchange
+      - Data/Exchange
       summary: ConnectableExchangeList
       description: Fetch list of all exchanges that are connectable
       parameters:
@@ -194,7 +194,7 @@ paths:
   "/Exchange/ExchangeProductList":
     get:
       tags:
-      - Exchange
+      - Data/Exchange
       summary: ExchangeProductList
       description: Fetch list of all products on an exchange
       parameters:
@@ -212,7 +212,7 @@ paths:
   "/Exchange/ExchangeAssetList":
     get:
       tags:
-      - Exchange
+      - Data/Exchange
       summary: ExchangeAssetList
       description: Fetch list of all assets (fiat and crypto) recognised by the exchange
         along with the equivalent CIS symbol for the asset
@@ -231,7 +231,7 @@ paths:
   "/Exchange/ProductInfo":
     get:
       tags:
-      - Exchange
+      - Data/Exchange
       summary: ProductInfo
       description: Fetch relevant product info for a given product / exchange
       parameters:
@@ -255,7 +255,7 @@ paths:
   "/Exchange/ExchangeSpotInstrumentList":
     get:
       tags:
-      - Exchange
+      - Data/Exchange
       summary: ExchangeInstrumentList
       description: Fetch list of all instruments for the exchange along with the equivalent
         CIS symbol for the instrument
@@ -274,7 +274,7 @@ paths:
   "/Index/GetAllIndices":
     get:
       tags:
-      - Index
+      - Data/Index
       summary: GetAllIndices
       description: Fetch a list of all indices and a small amount of descriptive data
         for each
@@ -294,7 +294,7 @@ paths:
   "/Index/GetIndexFull":
     get:
       tags:
-      - Index
+      - Data/Index
       summary: GetIndexFull
       description: Gets full data for a given index
       parameters:
@@ -330,7 +330,7 @@ paths:
   "/Index/GetIndexConstituents":
     get:
       tags:
-      - Index
+      - Data/Index
       summary: GetIndexConstituents
       description: Gets full data for a given index
       parameters:
@@ -384,7 +384,7 @@ paths:
   "/Indicator/GetIndicatorList":
     get:
       tags:
-      - Indicator
+      - Data/Indicator
       summary: GetIndicatorList
       description: Get a list of Indicators avaiable
       responses:
@@ -397,7 +397,7 @@ paths:
   "/Indicator/GetIndicatorTemplates":
     get:
       tags:
-      - Indicator
+      - Data/Indicator
       summary: GetIndicatorTemplates
       description: Get a list of Pre Set Templates
       responses:
@@ -410,7 +410,7 @@ paths:
   "/Indicator/GetIndicators":
     post:
       tags:
-      - Indicator
+      - Data/Indicator
       summary: GetIndicators
       description: Request a list of Indicators for a symbol / interval
       requestBody:
@@ -435,7 +435,7 @@ paths:
   "/Info":
     get:
       tags:
-      - Info
+      - Data/Info
       summary: Info
       description: returna version and current time
       responses:
@@ -444,7 +444,7 @@ paths:
   "/Metadata/GetLanguages":
     get:
       tags:
-      - Metadata
+      - Data/Metadata
       summary: GetLanguages
       description: Gets a list of supported languages
       parameters:
@@ -472,7 +472,7 @@ paths:
   "/Metadata/GetMetaData":
     get:
       tags:
-      - Metadata
+      - Data/Metadata
       summary: GetMetaData
       description: Get full metadata for the application
       parameters:
@@ -491,7 +491,7 @@ paths:
   "/Metadata/GetNewsTagsMetaData":
     get:
       tags:
-      - Metadata
+      - Data/Metadata
       summary: GetNewsTagsMetaData
       description: Get News Meta Tags
       parameters:
@@ -514,7 +514,7 @@ paths:
   "/Metadata/GetNewsSources":
     get:
       tags:
-      - Metadata
+      - Data/Metadata
       summary: GetNewsSources
       description: Get News Sources
       parameters:
@@ -534,7 +534,7 @@ paths:
   "/News/NewsById":
     get:
       tags:
-      - News
+      - Data/News
       summary: Retrieve a news article by its id
       parameters:
       - name: id
@@ -550,7 +550,7 @@ paths:
   "/News/NewsSearch":
     get:
       tags:
-      - News
+      - Data/News
       summary: NewsSearch
       description: Perform a search across all news data
       parameters:
@@ -656,7 +656,7 @@ paths:
           description: News Article List
     post:
       tags:
-      - News
+      - Data/News
       summary: NewsSearch
       description: Perform a search across all news data
       requestBody:
@@ -677,7 +677,7 @@ paths:
   "/News/NewsSentimentHistory":
     get:
       tags:
-      - News
+      - Data/News
       summary: NewsSentimentHistory
       description: Get a timeseries of News Sentiment
       parameters:
@@ -766,7 +766,7 @@ paths:
   "/Reports/GetSectorReports":
     get:
       tags:
-      - Reports
+      - Data/Reports
       summary: GetSectorReports
       description: Returns a list of reports for a sector
       parameters:
@@ -802,7 +802,7 @@ paths:
   "/Search/SpotSearch":
     get:
       tags:
-      - Search
+      - Data/Search
       summary: SpotSearch
       description: Search for spot symbols across the entire universe
       parameters:
@@ -906,7 +906,7 @@ paths:
                 type: string
     post:
       tags:
-      - Search
+      - Data/Search
       summary: SpotSearch
       description: Search for spot symbols across the entire universe
       requestBody:
@@ -931,7 +931,7 @@ paths:
   "/Search/CoinSearch":
     get:
       tags:
-      - Search
+      - Data/Search
       summary: CoinSearch
       description: Powerful search of our coin universe
       parameters:
@@ -1181,7 +1181,7 @@ paths:
                 type: string
     post:
       tags:
-      - Search
+      - Data/Search
       summary: CoinSearch
       description: Powerful search of our coin universe
       requestBody:
@@ -1202,7 +1202,7 @@ paths:
   "/Search/IndexSearch":
     get:
       tags:
-      - Search
+      - Data/Search
       summary: IndexSearch
       description: Powerful search of our index universe
       parameters:
@@ -1345,7 +1345,7 @@ paths:
   "/Search/QuickSearch":
     get:
       tags:
-      - Search
+      - Data/Search
       summary: QuickSearch
       description: Quickly search for coins, indices and sectors
       parameters:
@@ -1390,7 +1390,7 @@ paths:
   "/Search/QuickSearchCoin":
     get:
       tags:
-      - Search
+      - Data/Search
       summary: QuickSearchCoin
       description: Quickly search for coins
       parameters:
@@ -1435,7 +1435,7 @@ paths:
   "/Search/QuickSearchIndex":
     get:
       tags:
-      - Search
+      - Data/Search
       summary: QuickSearchIndex
       description: Quickly search for indices
       parameters:
@@ -1480,7 +1480,7 @@ paths:
   "/Search/QuickSearchSector":
     get:
       tags:
-      - Search
+      - Data/Search
       summary: QuickSearchSector
       description: Quickly search for Sectors
       parameters:
@@ -1525,7 +1525,7 @@ paths:
   "/Sector/GetSectorSummary":
     get:
       tags:
-      - Sector
+      - Data/Sector
       summary: GetSectorSummary
       description: Get a summary of all sectors
       parameters:
@@ -1561,7 +1561,7 @@ paths:
   "/Sector/GetSingleSectorSummary":
     get:
       tags:
-      - Sector
+      - Data/Sector
       summary: GetSingleSectorSummary
       description: Get a summary for a specific sector
       parameters:
@@ -1597,7 +1597,7 @@ paths:
   "/Sector/GetSingleSectorCoins":
     get:
       tags:
-      - Sector
+      - Data/Sector
       summary: GetSingleSectorCoins
       description: Get Coins in Sector
       parameters:
@@ -1624,7 +1624,7 @@ paths:
   "/Sector/GetSingleSectorCoinPerformanceDetail":
     get:
       tags:
-      - Sector
+      - Data/Sector
       summary: GetSingleSectorCoinPerformanceDetail
       description: Get coins in the sector with their performance data
       parameters:
@@ -1660,7 +1660,7 @@ paths:
   "/Sector/GetSingleSectorCoinPerformanceDetailSummary":
     get:
       tags:
-      - Sector
+      - Data/Sector
       summary: GetSingleSectorCoinPerformanceDetailSummary
       description: Get coins in the sector with their performance data for the top
         and bottom performers
@@ -1697,7 +1697,7 @@ paths:
   "/Timeseries/GetTimeseries":
     get:
       tags:
-      - Timeseries
+      - Data/Timeseries
       summary: GetTimeseries
       description: Get Timeseries for a symbol
       parameters:
@@ -1762,7 +1762,7 @@ paths:
   "/Timeseries/GetAssetPricesByDate":
     get:
       tags:
-      - Timeseries
+      - Data/Timeseries
       summary: GetAssetPricesByDate
       description: Fetch prices for all assets in db for a given date / key ccy
       parameters:
@@ -1794,7 +1794,7 @@ paths:
   "/XRef/GetAssetsBySource":
     get:
       tags:
-      - XRef
+      - Data/XRef
       summary: GetAssetsBySource
       description: Fetch asset xref mappings for a list of source codes
       parameters:
@@ -1812,7 +1812,7 @@ paths:
   "/XRef/GetSpotSymbolsBySource":
     get:
       tags:
-      - XRef
+      - Data/XRef
       summary: GetSpotSymbolsBySource
       description: Fetch spot instruments xref mappings for a soure_code
       parameters:
@@ -2106,42 +2106,42 @@ components:
           nullable: true
       additionalProperties: false
 tags:
-- name: Coin
+- name: Data/Coin
   description: Endpoints for accessing coin data
   x-tag-expanded: true
-- name: Exchange
+- name: Data/Exchange
   description: Exchange Data Endpoints
   x-tag-expanded: false
-- name: Index
+- name: Data/Index
   description: Endpoints for accessing Index data
   x-tag-expanded: false
-- name: Info
+- name: Data/Info
   description: General API Info
   x-tag-expanded: false
-- name: Metadata
+- name: Data/Metadata
   description: Endpoints for accessing metadata
   x-tag-expanded: false
-- name: News
+- name: Data/News
   description: News Endpoints
   x-tag-expanded: false
-- name: Reports
+- name: Data/Reports
   description: Reports Endpoints
   x-tag-expanded: false
-- name: Search
+- name: Data/Search
   description: Search Endpoints
   x-tag-expanded: false
-- name: Sector
+- name: Data/Sector
   description: Sector Endpoints
   x-tag-expanded: false
-- name: Timeseries
+- name: Data/Timeseries
   description: Timeseries Endpoints
   x-tag-expanded: false
-- name: Asset
+- name: Data/Asset
   description: Endpoints for accessing asset data
   x-tag-expanded: false
-- name: Indicator
+- name: Data/Indicator
   description: Indicator Endpoints
   x-tag-expanded: false
-- name: XRef
+- name: Data/XRef
   description: Endpoints for accessing xref data
   x-tag-expanded: false
