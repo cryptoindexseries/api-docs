@@ -5,13 +5,45 @@
   <head>
     <meta charset="utf-8"> <!-- Important: rapi-doc uses utf8 charecters -->
     <link rel="shortcut icon" href="/media/n20pxdli/cis_logo_icon_colour-1.png?width=32&amp;height=32" type="image/png">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="module" src="https://unpkg.com/rapidoc/dist/rapidoc-min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   </head>
   <body>
-    <div style="padding:10px;background-color:black;">
-      <img src="https://cryptoindexseries.com/media/yk4nymvj/cis_logo_text_white_small-1.png?width=250&height=25" style="padding-right:10px;" />
-      <a href="https://cryptoindexseries.github.io/api-docs/" style="padding-right:10px;">DATA API</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-0 py-3">
+  <div class="container-xl">
+    <!-- Logo -->
+    <a class="navbar-brand" href="#">
+      <img src="https://preview.webpixels.io/web/img/logos/clever-light.svg" class="h-8" alt="...">
+    </a>
+    <!-- Navbar toggle -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Collapse -->
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <!-- Nav -->
+      <div class="navbar-nav mx-lg-auto">
+        <a class="nav-item nav-link active" href="#" aria-current="page">Home</a>
+        <a class="nav-item nav-link" href="#">Product</a>
+        <a class="nav-item nav-link" href="#">Features</a>
+        <a class="nav-item nav-link" href="#">Pricing</a>
+      </div>
+      <!-- Right navigation -->
+      <div class="navbar-nav ms-lg-4">
+        <a class="nav-item nav-link" href="#">Sign in</a>
+      </div>
+      <!-- Action -->
+      <div class="d-flex align-items-lg-center mt-3 mt-lg-0">
+        <a href="#" class="btn btn-sm btn-primary w-full w-lg-auto">
+          Register
+        </a>
+      </div>
     </div>
+  </div>
+</nav>
     
     <rapi-doc 
       render-style="focused"
