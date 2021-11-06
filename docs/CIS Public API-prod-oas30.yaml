@@ -5175,7 +5175,7 @@ spot_search_order_by:
       - vto
       - chgpct
       type: string
-    order_by_direction:
+order_by_direction:
       enum:
       - asc
       - desc
@@ -5325,7 +5325,7 @@ coin_search_model_body:
           type: boolean
           nullable: true
       additionalProperties: false
-  securitySchemes:
+securitySchemes:
     CustomAuthorizer:
       type: "apiKey"
       name: "Authorization"
