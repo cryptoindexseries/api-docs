@@ -1850,7 +1850,7 @@ paths:
       responses:
         '200':
           description: Coin data
-  /Coin/GetAllCoins:
+/Coin/GetAllCoins:
     get:
       tags:
       - Coin
