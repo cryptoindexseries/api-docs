@@ -2,7 +2,9 @@
 openapi: 3.0.1
 info:
   title: CIS UNIFIED API
-  
+  description: |
+    # Welcome
+
   version: v2
   x-logo:
     url: https://cryptoindexseries.com/media/yk4nymvj/cis_logo_text_white_small-1.png?width=200&height=20
