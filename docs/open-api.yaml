@@ -3563,17 +3563,7 @@ Empty:
           type: "string"
         asset_amount:
           type: "integer"
-  securitySchemes:
-    CustomAuthorizer:
-      type: "apiKey"
-      name: "Authorization"
-      in: "header"
-      x-amazon-apigateway-authtype: "custom"
-    CustomAuthorizerRequest:
-      type: "apiKey"
-      name: "Unused"
-      in: "header"
-      x-amazon-apigateway-authtype: "custom"
+ 
       
 tags:
 - name: Coin
@@ -3616,13 +3606,29 @@ tags:
   description: Endpoints for accessing xref data
   x-tag-expanded: false
 - name: "Portfolio CRUD"
+  description:
+  x-tag-expanded: false
 - name: "Account CRUD"
+  description: 
+  x-tag-expanded: false
 - name: "Account-Portfolio Relation"
+  description: 
+  x-tag-expanded: false
 - name: "Balance"
+  description: 
+  x-tag-expanded: false
 - name: "Trade"
+  description: 
+  x-tag-expanded: false
 - name: "Transfer"
+  description: 
+  x-tag-expanded: false
 - name: "Document"
+  description: 
+  x-tag-expanded: false
 - name: "Trading"
+  description: 
+  x-tag-expanded: false
 
 x-tagGroups:
 - name: "Data API"
