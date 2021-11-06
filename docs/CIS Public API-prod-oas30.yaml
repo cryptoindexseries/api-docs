@@ -5087,7 +5087,7 @@ get_asset_prices_request_model:
           type: string
           nullable: true
       additionalProperties: false
-    indicator_request:
+indicator_request:
       type: object
       properties:
         indicator_code:
@@ -5104,7 +5104,7 @@ get_asset_prices_request_model:
             additionalProperties: false
           nullable: true
       additionalProperties: false
-    is_indicator_request:
+is_indicator_request:
       type: object
       properties:
         symbol:
@@ -5122,7 +5122,7 @@ get_asset_prices_request_model:
             "$ref": "#/components/schemas/indicator_request"
           nullable: true
       additionalProperties: false
-    news_search_model_body:
+news_search_model_body:
       type: object
       properties:
         news_sources:
@@ -5180,7 +5180,7 @@ get_asset_prices_request_model:
       - asc
       - desc
       type: string
-    srch_spot_search_input_model:
+srch_spot_search_input_model:
       type: object
       properties:
         search_string:
@@ -5226,7 +5226,7 @@ get_asset_prices_request_model:
           type: string
           nullable: true
       additionalProperties: false
-    coin_search_model_body:
+coin_search_model_body:
       type: object
       properties:
         coin_symbols:
