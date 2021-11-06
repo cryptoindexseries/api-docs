@@ -5167,7 +5167,7 @@ news_search_model_body:
           type: integer
           format: int32
       additionalProperties: false
-    spot_search_order_by:
+spot_search_order_by:
       enum:
       - symbol
       - n
