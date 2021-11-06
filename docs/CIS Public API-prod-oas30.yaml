@@ -1823,7 +1823,7 @@ paths:
               "$ref": "#/components/schemas/get_asset_prices_request_model"
       responses:
         '200':
-          description: Success
+          description: Success      
   "/Coin/GetCoin":
     get:
       tags:
