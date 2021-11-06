@@ -1774,9 +1774,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Empty"
-                
-"/Asset/GetAssetPrices":
+                $ref: "#/components/schemas/Empty"             
+/Asset/GetAssetPrices:
     get:
       tags:
       - Asset
@@ -1824,7 +1823,7 @@ paths:
       responses:
         '200':
           description: Success      
-  "/Coin/GetCoin":
+/Coin/GetCoin:
     get:
       tags:
       - Coin
